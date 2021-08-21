@@ -1,19 +1,24 @@
 //file system
 const fs = require('fs');
 
-const crearOperacion = async (base = 8) => {
+const crearOperacion = async (base = 8, listar= false) => {
 
     try {
-        console.log('=================');
-        console.log(`  TABLA del ${base}  `);
-        console.log('=================');
+        
 
         let salida = '';
 
         for (let i = 1; i <= 12; i++) {
             salida += `${base} * ${i} = ${base * i}\n`;
         }
-        console.log(salida);
+        
+        if(listar){
+            console.log('=================');
+            console.log(`  TABLA del ${base}  `);
+            console.log('=================');
+            console.log(salida);
+        }
+        
         fs.writeFileSync(`Tabla-${base}.txt`, salida);
         return `Tabla-${base}.txt CREADA!`;
 
